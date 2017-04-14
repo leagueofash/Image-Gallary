@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Python Flask Image Gallery App</title>
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+
+    <style>
+            .btn-file {
+        position: relative;
+        overflow: hidden;
+    }
+    .btn-file input[type=file] {
+        position: absolute;
+        top: 0;
+        right: 0;
+        min-width: 100%;
+        min-height: 100%;
+        font-size: 100px;
+        text-align: right;
+        filter: alpha(opacity=0);
+        opacity: 0;
+        outline: none;
+        background: white;
+        cursor: inherit;
+        display: block;
+    }
+
+    </style>
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js">
+    </script>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <form id="upload-form" action="{{url_for('upload')}}" method="POST" enctype="multipart/form-data">
+            <!-- Form Name -->
+            <legend>Upload your image</legend>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label for="txtTitle">Caption</label>
+
+                <input id="txtTitle" name="description" type="text" class="form-control input-md">
+
+            </div>
+
+
+            <div class="form-group">
+                <strong>Files:</strong>
+                <div class="input-group">
+                    <span class="input-group-btn">
+                    <span class="btn btn-default btn-file">
+                        Browse&hellip;   <input id="imagename" type="file" name="file" multiple>
+                    </span>
+                    </span>
+
+                </div>
+
+            </div>
+            <!-- Button -->
+            <div class="form-group">
+
+                <p class="btn btn-default btn-file">
+                    <input id="singlebutton" name="singlebutton" class="btn btn-primary" type="submit" value="Upload" />
+                </p>
+                <form action="back_to_gallery">
+                <p class="btn btn-default btn-file">
+                    <input name="singlebutton" class="btn btn-primary" type="submit" value="View Gallery" />
+                </p>
+                </form>
+            </div>
+
+
+        </form>
+
+        <footer class="footer">
+            <p>&copy; Image Gallery</p>
+        </footer>
+
+    </div>
+</body>
+
+</html>

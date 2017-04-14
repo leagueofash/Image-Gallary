@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    div.img {
+        display: inline-block;
+        margin: 5px;
+        border: 1px solid #ccc;
+        float: left;
+        width: 180px;
+    }
+
+    div.img:hover {
+        border: 1px solid #777;
+    }
+
+    div.img img {
+        width: 100%;
+        height: auto;
+    }
+
+    input[type=button], input[type=submit], input[type=reset] {
+    background-color: red;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    }
+    div.header {
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:30px;
+    background-color: #800080;
+    }
+    .col-sm-5cols{
+    position: relative;
+    min-height: 1px;
+    padding-right: 10px;
+    padding-left: 10px;
+    }
+
+    @media (min-width: 768px) {
+        .col-sm-5cols {
+        width: 20%;
+        float: left;
+    }
+</style>
+
+</head>
+<body>
+<div>
+
+    <div id="header">
+            <h1>Gallery</h1>
+            <div style="float: left; width: 130px">
+                <form action="PrevPage" method="post">
+                    <input type="submit" value="Previous-Page">
+                </form>
+
+            </div>
+            <div style="float: right; width: 225px">
+                <form action="NextPage" method="post">
+                    <input type="submit" value="Next-page">
+                </form>
+            </div>
+            <div style="float: center; width: 225px">
+                <form action="Upload" method="post">
+                    <input type="submit" value="Upload">
+                </form>
+            </div>
+    </div>
+        <br><br><br>
+        {% for i in range(0,image_names|length) %}
+        <div class=col-sm-5cols>
+            <a target="_blank">
+            <img src=" {{url_for('send_image', filename=image_names[i])}}" width="300" height=200">
+            </a>
+            <figcaption>{{caption[i]}}</figcaption><br><br><br>
+        </div>
+        {% endfor %}
+    <footer class="footer">
+            <p>&copy; Image Gallery</p>
+        </footer>
+
+</div>
+</body>
+</html>
